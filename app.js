@@ -1,13 +1,5 @@
 // get input values
-let books = [
-  { title: "david", author: "steven", pages: 111, read: "on" },
-  {
-    title: "The gulag archipielago",
-    author: "alexander",
-    pages: 222,
-    read: "on",
-  },
-];
+let books = [];
 function Book(title, author, pages, read) {
   this.title = title;
   this.author = author;
@@ -33,6 +25,12 @@ function addBook() {
   }
   let book = new Book(title, author, pages, read);
   books.push(book);
+  loop();
+}
+// Remove books
+function removeBook() {
+  const btnRemove = document.querySelector(".book-remove");
+  btnRemove.addEventListener("click", () => {});
 }
 
 // CARDS
@@ -47,8 +45,16 @@ function loop() {
     <h3>${book.author}</h3>
     <p>${book.pages}</p>
     <p>${book.read}</p>
+    <button class="book-remove">Remove</button>
     `;
-    // console.log(books[key].title);
-    cardsContainer.appendChild(card);
+    // IF the books is not already in the screen, add it.
+    if (!cardsContainer.innerHTML.includes(book.title)) {
+      cardsContainer.appendChild(card);
+    }
   });
 }
+// Envent listener
+const sendBtn = document.querySelector("#addBook");
+sendBtn.addEventListener("click", () => {
+  addBook();
+});
