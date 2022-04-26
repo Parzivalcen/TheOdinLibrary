@@ -5,49 +5,47 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="./app.js" defer></script>
-    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./styles.css" />
     <title>library</title>
   </head>
   <body>
     <main>
       <div class="container">
-        <h1>library</h1>
+        <h1>Track Your Books</h1>
         <!-- ADD new book button -->
-        <button class="new-book">ADD NEW BOOK</button>
-        <div class="add-Container" data-visible = false>
-          <!-- title -->
-          <div class="form-field">
-            <label for="btitle">Book Title</label>
-            <input type="text" id="btitle" name="btitle" />
+        <div class="form-space">
+          <img src="./imgs/iconmonstr-book-20.svg" alt="" />
+          <button class="new-book-btn">ADD NEW BOOK</button>
+          <div class="add-Container" data-visible="false">
+            <!-- title -->
+            <h2>New Book</h2>
+            <div class="form-field">
+              <label for="btitle">Book Title</label>
+              <input type="text" id="btitle" name="btitle" />
+            </div>
+            <!-- author -->
+            <div class="form-field">
+              <label for="bauthor">Author</label>
+              <input type="text" id="bauthor" name="bauthor" />
+            </div>
+            <!-- pages -->
+            <div class="form-field">
+              <label for="bpages">pages</label>
+              <input type="number" id="bpages" name="bpages" />
+            </div>
+            <!-- read -->
+            <div class="form-field">
+              <label for="bread">read</label>
+              <input type="checkbox" id="bread" name="bread" />
+            </div>
+            <!-- Button -->
+
+            <button type="submit" id="addBook" class="addBook">Add</button>
           </div>
-          <!-- author -->
-          <div class="form-field">
-            <label for="bauthor">Author</label>
-            <input type="text" id="bauthor" name="bauthor" />
-          </div>
-          <!-- pages -->
-          <div class="form-field">
-            <label for="bpages">pages</label>
-            <input type="number" id="bpages" name="bpages" />
-          </div>
-          <!-- read -->
-          <div class="form-field">
-            <label for="bread">read</label>
-            <input type="checkbox" id="bread" name="bread" />
-          </div>
-          <!-- Button -->
-          
-          <input type="submit" id="addBook" class="addBook"></input>
         </div>
         <!-- CARDS FOR BOOKS -->
         <div class="container--cards">
-          <div class="card">
-            <h2>Book Title</h2>
-            <h3>Author</h3>
-            <p>999 pages</p>
-            <p>not read</p>
-            <button class="book-remove">Remove</button>
-          </div>
+          <!-- CARDS -->
         </div>
       </div>
     </main>

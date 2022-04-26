@@ -151,6 +151,127 @@ utility clases
 /* ---------
 LIBRARY
 ------------- */
+.container > h1 {
+  text-align: center;
+  padding-top: 2rem;
+  border-bottom: 1px solid grey;
+}
+.form-space{
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid grey;
+  height: 10rem;
+  position: relative;
+
+}
+.form-space > img{
+  width: 3rem;
+  margin-inline: auto;
+}
+/* ---------
+BUTTON 
+------------*/
+.new-book-btn{
+  padding-inline: 1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
 .add-Container{
   display: none;
+}
+
+/* ----------
+FORM FOR NEW BOOKS 
+ */
+.add-Container[data-visible=true]{
+  display: grid;
+  justify-content: center;
+  position: absolute;
+  background-color: whitesmoke;
+  top: 0%;
+  right: 50%;
+  transform: translate(50%);
+  width: 20rem;
+  padding: 1rem;
+  
+box-shadow: 0px 2px 5px 5px rgba(0, 0, 0, 0.75);
+}
+.form-field{
+  position:relative;
+  justify-self: center;
+  width:100%;
+  display: flex;
+  flex-direction: column;
+}
+.form-field:nth-child(5){
+  flex-direction: row;
+  align-items: center;
+  margin-top: 1rem;
+}
+.form-field>label{
+  opacity: 0.3;
+  padding-left: 1rem;
+  position: relative;
+}
+.form-field>input{
+  height: 2rem;
+  padding-left: 1rem;
+}
+/* CHECKBOX */
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 44px;
+  height: 24px;
+  border-radius: 12px;
+  border: 1px solid black;
+  background: #eee;
+  transition: all 0.4s;
+  margin-left: 1rem;
+}
+input[type="checkbox"]::before {
+  width: 16px;
+  height: 16px;
+  border-radius: 9px;
+  background-color: black;
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 33%;
+  transition: all 0.4s;
+}
+input[type="checkbox"]:checked {
+  background-color: #008bb6;
+  transition: all 0.4s;
+}
+input[type="checkbox"]:checked::before {
+  left: 43%;
+  transition: all 0.4s;
+}
+.addBook{
+  margin-top: 1rem;
+}
+/* ------------
+BOOKS CARDS
+-------------- */
+.container--cards{
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 20rem));
+  place-content: center;
+  gap: 2rem;
+}
+.card{
+box-shadow: 0px 2px 5px 5px rgba(0, 0, 0, 0.4);
+height: 12rem;
+padding: 1rem;
+display: flex;
+flex-direction: column;
+gap: 0.5rem;
+justify-content: center;
+}
+.card > button{
+ cursor: pointer;
 }
