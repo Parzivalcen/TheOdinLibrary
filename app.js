@@ -107,12 +107,12 @@ sendBtn.addEventListener("click", () => {
   }
 });
 
-book1 = new Book("The scientist", "Coldplay", 21, "Book Read");
-books.push(book1);
-book2 = new Book("7 Habits", "IDK", 212, "Not Read");
-books.push(book2);
-book3 = new Book("12 rules", "JBP", 500, "Not Read");
-books.push(book3);
-book4 = new Book("DUNE", "Frank Herbert", 1200, "Read");
-books.push(book4);
-loop();
+// book1 = new Book("The scientist", "Coldplay", 21, "Book Read");
+// books.push(book1);
+// book2 = new Book("7 Habits", "IDK", 212, "Not Read");
+// books.push(book2);
+// book3 = new Book("12 rules", "JBP", 500, "Not Read");
+// books.push(book3);
+// book4 = new Book("DUNE", "Frank Herbert", 1200, "Read");
+// books.push(book4);
+// loop();
