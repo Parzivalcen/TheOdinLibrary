@@ -87,21 +87,26 @@ class StoreBook {
   }
   static changeRead(e) {
     if (e.target.classList.contains("bread")) {
-      console.log("change read LS");
-      let title = e.target.previousElementSibling.previousElementSibling.previousElementSibling.innerHTML;
-      console.log(title);
+      // Get title of Card/book clicked
+      let title =
+        e.target.previousElementSibling.previousElementSibling
+          .previousElementSibling.innerHTML;
+
+      // Get Books
       let books = StoreBook.getBooks();
+
       // get clicked book index by title
-      let bookIndex = books.findIndex(b => b.title == title);
-      if(books[bookIndex].read == 'read'){
-        console.log('has been read')
+      let bookIndex = books.findIndex((b) => b.title == title);
+
+      // change read status on the SINGLE book obj.
+      if (books[bookIndex].read == "read") {
+        books[bookIndex].read = "not read";
+      } else if (books[bookIndex].read == "not read") {
+        books[bookIndex].read = "read";
       }
-      
-      console.log(books)
-      // books.forEach((book) => {
-      //   book
-      // });
-      // localStorage.setItem("books", JSON.stringify(books));
+
+      // Commit changes to local Storage
+      localStorage.setItem("books", JSON.stringify(books));
     }
   }
 }
