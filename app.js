@@ -88,16 +88,20 @@ class StoreBook {
   static changeRead(e) {
     if (e.target.classList.contains("bread")) {
       console.log("change read LS");
+      let title = e.target.previousElementSibling.previousElementSibling.previousElementSibling.innerHTML;
+      console.log(title);
       let books = StoreBook.getBooks();
-
-      books.forEach((book) => {
-        if (book.read == "read") {
-          book.read = "not read";
-        } else {
-          book.read = "read";
-        }
-      });
-      localStorage.setItem("books", JSON.stringify(books));
+      // get clicked book index by title
+      let bookIndex = books.findIndex(b => b.title == title);
+      if(books[bookIndex].read == 'read'){
+        console.log('has been read')
+      }
+      
+      console.log(books)
+      // books.forEach((book) => {
+      //   book
+      // });
+      // localStorage.setItem("books", JSON.stringify(books));
     }
   }
 }
