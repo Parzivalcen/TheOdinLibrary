@@ -179,7 +179,10 @@ BUTTON
 }
 
 .add-Container{
-  display: none;
+  position: absolute;
+  top: -300%;
+  right: 50%;
+  transition: .5s ease;
 }
 
 /* ----------

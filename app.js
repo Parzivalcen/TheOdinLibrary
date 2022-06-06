@@ -1,5 +1,3 @@
-// list of books
-let books = [];
 // book object
 class Book {
   constructor(title, author, pages, read) {
@@ -47,6 +45,11 @@ class UI {
       }
       console.log();
     }
+  }
+  static ClearFields() {
+    document.querySelector("#btitle").value = "";
+    document.querySelector("#bauthor").value = "";
+    document.querySelector("#bpages").value = "";
   }
 }
 
@@ -141,11 +144,12 @@ addBtn.addEventListener("click", () => {
   let newBook = new Book(title, author, pages, read);
   // CALL ADD BOOK
   UI.addBookGrid(newBook);
+  // ADD to Local Storage
   StoreBook.addBook(newBook);
-  const addForm = document.querySelector(".add-Container");
-  // Make form dissappear
+  // Clear form fields
+  UI.ClearFields();
 });
-// remove book from grid btn
+// remove book and change read status btn's
 document.addEventListener("click", (e) => {
   UI.removeBookGrid(e);
   UI.ChageRead(e);
@@ -156,6 +160,7 @@ document.addEventListener("click", (e) => {
     e.target.classList.contains("container--cards") ||
     e.target.classList.contains("addBook")
   ) {
+    // Make form dissappear
     addForm.setAttribute("data-visible", false);
   }
 });
