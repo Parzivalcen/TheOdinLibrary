@@ -114,6 +114,36 @@ class StoreBook {
   }
 }
 
+class validateForm {
+  static checkValidity(input, inputError){
+    input.addEventListener('input', ()=>{
+      if(input.validity.valid){
+        inputError.textContent = '';
+        inputError.setAttribute('data-valid', true);
+      }else{
+        this.showError(input, inputError);
+      }
+    })
+  
+  }
+
+  static vowelTest(s) {
+    return (/^[aeiou]$/i).test(s);
+  }
+  static showError(input, inputError){
+    const inputTitle = input.parentElement.firstElementChild.textContent;
+    if(input.validity.valueMissing){
+      inputError.textContent = `Please enter ${this.vowelTest(inputTitle[0])?'an':'a'}     ${inputTitle}`;
+    }else if(input.validity.typeMismatch){
+      inputError.textContent = `The value needs to be ${this.vowelTest(inputTitle[0])?'an':'a'} ${inputTitle}`
+  
+    }else if(input.validity.tooShort){
+      inputError.textContent = `${inputTitle} should be at least ${input.minLength} characters; you entered ${input.value.length}`
+    }
+    inputError.setAttribute('data-valid', false);
+  
+  }
+}
 /*---------
 Events
 ------------*/
@@ -121,7 +151,8 @@ document.addEventListener("DOMContentLoaded", UI.booksLSdisplay());
 // Show form
 const newBookBtn = document.querySelector(".new-book-btn");
 const addForm = document.querySelector(".add-Container");
-newBookBtn.addEventListener("click", () => {
+newBookBtn.addEventListener("click", (e) => {
+  e.preventDefault();
   let visibility = addForm.getAttribute("data-visible");
   if (visibility == "false") {
     addForm.setAttribute("data-visible", true);
@@ -130,24 +161,42 @@ newBookBtn.addEventListener("click", () => {
 
 // Add Btn Form
 const addBtn = document.querySelector("#addBook");
-addBtn.addEventListener("click", () => {
-  const title = document.querySelector("#btitle").value;
-  const author = document.querySelector("#bauthor").value;
-  const pages = document.querySelector("#bpages").value;
-  let read = document.querySelector("#bread").checked;
-  if (read) {
-    read = "read";
-  } else {
-    read = "not read";
-  }
+const errors = document.querySelectorAll('.error');
 
-  let newBook = new Book(title, author, pages, read);
-  // CALL ADD BOOK
-  UI.addBookGrid(newBook);
-  // ADD to Local Storage
-  StoreBook.addBook(newBook);
-  // Clear form fields
-  UI.ClearFields();
+errors.forEach((error) => {
+  const input = error.previousElementSibling;
+  validateForm.checkValidity(input, error);
+});
+
+addBtn.addEventListener("click", () => {
+  for(let i = 0; i < errors.length; i++){
+    const input = errors[i].previousElementSibling;
+
+    // console.log(errors[i].previousElementSibling);
+    if(!input.validity.valid){
+      validateForm.showError(input, errors[i])
+    } else{
+      const title = document.querySelector("#btitle").value;
+      const author = document.querySelector("#bauthor").value;
+      const pages = document.querySelector("#bpages").value;
+      let read = document.querySelector("#bread").checked;
+      if (read) {
+        read = "read";
+      } else {
+        read = "not read";
+      }
+    
+      let newBook = new Book(title, author, pages, read);
+      // CALL ADD BOOK
+      UI.addBookGrid(newBook);
+      // ADD to Local Storage
+      StoreBook.addBook(newBook);
+      // Clear form fields
+      UI.ClearFields();
+      addForm.setAttribute("data-visible", false);
+    }
+  }
+  
 });
 // remove book and change read status btn's
 document.addEventListener("click", (e) => {
@@ -157,9 +206,10 @@ document.addEventListener("click", (e) => {
   StoreBook.changeRead(e);
   if (
     e.target.classList.contains("form-space") ||
-    e.target.classList.contains("container--cards") ||
-    e.target.classList.contains("addBook")
+    e.target.classList.contains("container--cards") 
+    // e.target.classList.contains("addBook")
   ) {
+    e.preventDefault();
     // Make form dissappear
     addForm.setAttribute("data-visible", false);
   }

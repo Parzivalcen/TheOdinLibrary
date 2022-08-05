@@ -16,17 +16,20 @@
         <div class="form-space">
           <img src="./imgs/iconmonstr-book-20.svg" alt="" />
           <button class="new-book-btn">ADD NEW BOOK</button>
-          <div class="add-Container" data-visible="false">
+          
+          <form class="add-Container" data-visible="false" novalidate>
             <!-- title -->
             <h2>New Book</h2>
             <div class="form-field">
               <label for="btitle">Book Title</label>
-              <input type="text" id="btitle" name="btitle" />
+              <input required type="text" id="btitle" name="btitle" />
+              <span class="error error--btitle"></span>
             </div>
             <!-- author -->
             <div class="form-field">
               <label for="bauthor">Author</label>
-              <input type="text" id="bauthor" name="bauthor" />
+              <input required type="text" id="bauthor" name="bauthor" />
+              <span class="error error--author"></span>
             </div>
             <!-- pages -->
             <div class="form-field">
@@ -40,8 +43,8 @@
             </div>
             <!-- Button -->
 
-            <button type="submit" id="addBook" class="addBook">Add</button>
-          </div>
+            <button type="button" id="addBook" class="addBook">Add</button>
+          </form>
         </div>
         <!-- CARDS FOR BOOKS -->
         <div class="container--cards">

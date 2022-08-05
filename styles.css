@@ -226,23 +226,23 @@ box-shadow: 0px 2px 5px 5px rgba(0, 0, 0, 0.75);
 input[type="checkbox"] {
   -webkit-appearance: none;
   appearance: none;
-  width: 44px;
-  height: 24px;
+  width: 4vh;
+  height: 2vh;
   border-radius: 12px;
   border: 1px solid black;
   background: #eee;
   transition: all 0.4s;
-  margin-left: 1rem;
+  margin-left: 1vh;
 }
 input[type="checkbox"]::before {
-  width: 16px;
-  height: 16px;
-  border-radius: 9px;
+  width: 1.6vh;
+  height: 1.6vh;
+  border-radius: 10px;
   background-color: black;
   content: "";
   position: absolute;
-  top: 4px;
-  left: 33%;
+  top: .2vh;
+  left: 28%;
   transition: all 0.4s;
 }
 input[type="checkbox"]:checked {
@@ -250,7 +250,7 @@ input[type="checkbox"]:checked {
   transition: all 0.4s;
 }
 input[type="checkbox"]:checked::before {
-  left: 43%;
+  left: 35%;
   transition: all 0.4s;
 }
 .addBook{
@@ -277,4 +277,7 @@ justify-content: center;
 }
 .card > button{
  cursor: pointer;
+}
+.error[data-valid=false]{
+  color: rgb(197, 0, 0);
 }
