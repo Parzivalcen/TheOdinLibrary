@@ -1,3 +1,4 @@
+
 // book object
 class Book {
   constructor(title, author, pages, read) {
@@ -199,19 +200,4 @@ addBtn.addEventListener("click", () => {
     }
   }
   
-});
-// remove book and change read status btn's
-document.addEventListener("click", (e) => {
-  UI.removeBookGrid(e);
-  UI.ChageRead(e);
-  StoreBook.removeBook(e);
-  StoreBook.changeRead(e);
-  if (
-    e.target.classList.contains("form-space")
-    // e.target.classList.contains("addBook")
-  ) {
-    e.preventDefault();
-    // Make form dissappear
-    formDiv.setAttribute("data-visible", false);
-  }
 });
