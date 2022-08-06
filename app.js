@@ -150,12 +150,14 @@ Events
 document.addEventListener("DOMContentLoaded", UI.booksLSdisplay());
 // Show form
 const newBookBtn = document.querySelector(".new-book-btn");
+const formDiv = document.querySelector(".form-space")
 const addForm = document.querySelector(".add-Container");
+
 newBookBtn.addEventListener("click", (e) => {
   e.preventDefault();
-  let visibility = addForm.getAttribute("data-visible");
+  let visibility = formDiv.getAttribute("data-visible");
   if (visibility == "false") {
-    addForm.setAttribute("data-visible", true);
+    formDiv.setAttribute("data-visible", true);
   }
 });
 
@@ -193,7 +195,7 @@ addBtn.addEventListener("click", () => {
       StoreBook.addBook(newBook);
       // Clear form fields
       UI.ClearFields();
-      addForm.setAttribute("data-visible", false);
+      formDiv.setAttribute("data-visible", false);
     }
   }
   
@@ -205,12 +207,11 @@ document.addEventListener("click", (e) => {
   StoreBook.removeBook(e);
   StoreBook.changeRead(e);
   if (
-    e.target.classList.contains("form-space") ||
-    e.target.classList.contains("container--cards") 
+    e.target.classList.contains("form-space")
     // e.target.classList.contains("addBook")
   ) {
     e.preventDefault();
     // Make form dissappear
-    addForm.setAttribute("data-visible", false);
+    formDiv.setAttribute("data-visible", false);
   }
 });
