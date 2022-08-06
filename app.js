@@ -212,6 +212,7 @@ document.addEventListener("click", (e) => {
   ) {
     e.preventDefault();
     // Make form dissappear
+    
     formDiv.setAttribute("data-visible", false);
   }
 });
