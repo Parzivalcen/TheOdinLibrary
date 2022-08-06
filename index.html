@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -10,23 +11,27 @@
   </head>
   <body>
     <main>
-      <div class="container">
+      <header>
         <h1>Track Your Books</h1>
         <!-- ADD new book button -->
-        <div class="form-space">
-          <img src="./imgs/iconmonstr-book-20.svg" alt="" />
-          <button class="new-book-btn">ADD NEW BOOK</button>
-          <div class="add-Container" data-visible="false">
+        <img src="./imgs/iconmonstr-book-20.svg" alt="" />
+        <button class="new-book-btn">ADD NEW BOOK</button>
+      </header>
+      
+      <div class="form-space" data-visible="false">
+          <form class="add-Container" data-visible="false" novalidate>
             <!-- title -->
             <h2>New Book</h2>
             <div class="form-field">
               <label for="btitle">Book Title</label>
-              <input type="text" id="btitle" name="btitle" />
+              <input required type="text" id="btitle" name="btitle" />
+              <span class="error error--btitle"></span>
             </div>
             <!-- author -->
             <div class="form-field">
               <label for="bauthor">Author</label>
-              <input type="text" id="bauthor" name="bauthor" />
+              <input required type="text" id="bauthor" name="bauthor" />
+              <span class="error error--author"></span>
             </div>
             <!-- pages -->
             <div class="form-field">
@@ -39,10 +44,11 @@
               <input type="checkbox" id="bread" name="bread" />
             </div>
             <!-- Button -->
-
-            <button type="submit" id="addBook" class="addBook">Add</button>
-          </div>
+            
+            <button type="button" id="addBook" class="addBook">Add</button>
+          </form>
         </div>
+        <div class="container">
         <!-- CARDS FOR BOOKS -->
         <div class="container--cards">
           <!-- CARDS -->
@@ -52,3 +58,4 @@
     <!-- FOOTER -->
   </body>
 </html>
+
